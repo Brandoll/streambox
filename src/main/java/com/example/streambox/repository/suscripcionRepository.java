@@ -1,4 +1,4 @@
 package com.example.streambox.repository;
 
-public class suscripcionRepository {
+public interface suscripcionRepository {
 }
