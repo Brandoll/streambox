@@ -30,8 +30,8 @@ public class cuentaPlataforma {
 
     @ManyToOne
     @JoinColumn(name = "plataforma_id", nullable = false)
-    private Plataforma plataforma; // Relación con la plataforma asociada.
+    private plataforma plataforma; // Relación con la plataforma asociada.
 
     @OneToMany(mappedBy = "cuentaPlataforma", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Suscripcion> suscripciones; // Relación con las suscripciones de esta cuenta.
+    private List<suscripcion> suscripciones; // Relación con las suscripciones de esta cuenta.
 }

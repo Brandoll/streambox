@@ -1,4 +1,4 @@
-// src/main/java/com/example/utp1/config/CorsConfig.java
+// src/main/java/com/example/streambox/config/CorsConfig.java
 package com.example.streambox.config;
 
 import org.springframework.context.annotation.Bean;
