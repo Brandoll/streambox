@@ -45,10 +45,10 @@ public class suscripcion {
     @Column(nullable = false, length = 50)
     private String metodoPago;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Integer numeroUsuarios;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Boolean renovacionAutomatica;
 
     @Column(length = 255)

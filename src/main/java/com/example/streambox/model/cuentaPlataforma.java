@@ -21,7 +21,7 @@ public class cuentaPlataforma {
     private String contraseña;
 
     @Column(nullable = false)
-    private Boolean estado;
+    private String estado; //CAMBIO 2.5.5
 
     @Column(length = 255)
     private String observaciones;
