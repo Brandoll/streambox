@@ -3,8 +3,6 @@ package com.example.streambox.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -17,21 +15,18 @@ public class cuentaPlataforma {
     private Long id;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String correo; // Correo asociado a la cuenta.
+    private String correo;
 
     @Column(nullable = false, length = 100)
-    private String contraseña; // Contraseña de la cuenta.
+    private String contraseña;
 
     @Column(nullable = false)
-    private Boolean estado; // Activo o inactivo.
+    private Boolean estado;
 
     @Column(length = 255)
-    private String observaciones; // Notas adicionales sobre la cuenta.
+    private String observaciones;
 
     @ManyToOne
-    @JoinColumn(name = "plataforma_id", nullable = false)
-    private plataforma plataforma; // Relación con la plataforma asociada.
-
-    @OneToMany(mappedBy = "cuentaPlataforma", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<suscripcion> suscripciones; // Relación con las suscripciones de esta cuenta.
+    @JoinColumn(name = "plataforma_id", nullable = false) // Relación obligatoria
+    private plataforma plataforma;
 }

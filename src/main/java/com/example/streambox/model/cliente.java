@@ -1,6 +1,7 @@
 package com.example.streambox.model;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 @Entity
 @Table(name = "cliente")
 public class cliente {
@@ -18,27 +18,27 @@ public class cliente {
     private Long id;
 
     @Column(nullable = false, length = 100)
-    private String nombre; // Nombre del cliente.
+    private String nombre;
 
     @Column(nullable = false, length = 100)
-    private String apellido; // Apellido del cliente.
+    private String apellido;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String email; // Correo electrónico del cliente.
+    private String email;
 
     @Column(nullable = true, length = 15)
-    private String telefono; // Teléfono de contacto del cliente.
+    private String telefono;
 
     @Column(nullable = true)
-    private String tipoDocumento; // Tipo de documento de identidad (DNI, pasaporte, etc.).
+    private String tipoDocumento;
 
     @Column(nullable = true, length = 20)
-    private String numeroDocumento; // Número de documento de identidad.
+    private String numeroDocumento;
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<suscripcion> suscripciones; // Relación con las suscripciones adquiridas por el cliente.
-
+    @JsonIgnore // Evita serializar la relación para prevenir referencias circulares
+    private List<suscripcion> suscripciones;
 
     @Column(nullable = true)
-    private String observaciones; // Notas adicionales sobre el cliente (por ejemplo, solicitudes especiales).
+    private String observaciones;
 }

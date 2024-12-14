@@ -33,9 +33,14 @@ public class plataformaController {
 
     // Crear una nueva plataforma
     @PostMapping
-    public plataforma createPlataforma(@RequestBody plataforma plataforma) {
-        return plataformaService.createPlataforma(plataforma);
+    public ResponseEntity<?> createPlataforma(@RequestBody plataforma plataforma) {
+        if (plataforma.getNombre() == null || plataforma.getNombre().isEmpty()) {
+            return ResponseEntity.badRequest().body("El nombre es obligatorio");
+        }
+        plataforma createdPlataforma = plataformaService.createPlataforma(plataforma);
+        return ResponseEntity.status(201).body(createdPlataforma);
     }
+
 
     // Actualizar una plataforma existente
     @PutMapping("/{id}")

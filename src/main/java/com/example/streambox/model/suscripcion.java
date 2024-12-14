@@ -3,6 +3,7 @@ package com.example.streambox.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Getter
@@ -17,39 +18,39 @@ public class suscripcion {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id", nullable = false)
-    private com.example.streambox.model.cliente cliente; // Relación con el cliente.
+    private cliente cliente;
 
     @ManyToOne
     @JoinColumn(name = "cuenta_plataforma_id", nullable = false)
-    private cuentaPlataforma cuentaPlataforma; // Relación con la cuenta de plataforma.
+    private cuentaPlataforma cuentaPlataforma;
 
     @Column(nullable = false)
-    private LocalDate fechaInicio; // Fecha de inicio de la suscripción.
+    private LocalDate fechaInicio;
 
     @Column(nullable = false)
-    private LocalDate fechaFin; // Fecha de fin de la suscripción.
+    private LocalDate fechaFin;
 
-    @Column(nullable = false)
-    private LocalDate fechaPago; // Fecha en que se realizó el último pago.
+    @Column(nullable = true)
+    private LocalDate fechaPago;
 
     @Column(nullable = false, length = 20)
-    private String estado; // Estado de la suscripción (ACTIVA, VENCIDA, CANCELADA).
+    private String estado;
 
     @Column(nullable = false)
-    private Double monto; // Monto total a pagar por la suscripción.
+    private Double monto;
 
     @Column(nullable = true)
-    private Double descuento; // Descuento aplicado, si existe.
+    private Double descuento;
+
+    @Column(nullable = false, length = 50)
+    private String metodoPago;
+
+    @Column(nullable = false)
+    private Integer numeroUsuarios;
+
+    @Column(nullable = false)
+    private Boolean renovacionAutomatica;
 
     @Column(length = 255)
-    private String observaciones; // Notas adicionales sobre la suscripción.
-
-    @Column(nullable = true)
-    private Integer numeroUsuarios; // Número de usuarios que comparten la suscripción.
-
-    @Column(nullable = true)
-    private Boolean renovacionAutomatica; // Indica si la suscripción se renueva automáticamente.
-
-    @Column(nullable = true)
-    private String metodoPago; // Método utilizado para el pago (e.g., Tarjeta, PayPal).
+    private String observaciones;
 }
